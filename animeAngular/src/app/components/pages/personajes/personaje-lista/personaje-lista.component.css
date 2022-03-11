@@ -1,0 +1,333 @@
+.container{
+    animation: animacionPersonaje 1.5s;
+}
+
+@keyframes animacionPersonaje{
+    0%{opacity: 0;filter:blur(14)}   
+    100%{opacity: 1;filter:blur(0)}
+}
+/*---------card ajustada-------*/
+.card{
+    width: 100%;
+    max-width:100%;
+    margin: 10px 0;
+    box-shadow: 0 rgba(0,0,0,0.19), 0 rgba(0,0,0,0.24);
+    background: rgba(255, 255, 255, 0.88);
+    transition: opacity 0.3s, filter 0.3s, box-shadow 0.3s;
+    opacity: 0.85;
+    filter: blur(0.4px);
+}
+
+.card-img-top{
+    height: calc(400px );
+    width: calc(100%+32px);
+    object-fit: cover;
+    animation: imgAnimacion 1.5s both;
+    filter:blur(0.5)
+}
+
+.card-img-personaje{
+    height: calc(400px );
+    width: calc(80%+32px);
+    object-fit: cover;
+    animation: imgAnimacion 1.5s both;
+    filter:blur(0.5)
+}
+
+.tamImg{
+    object-fit: none;
+}
+
+@keyframes imgAnimacion {
+    0% {opacity:0; filter:blur(14)}
+    100% {opacity:1; filter:blur(0)}
+}
+
+
+.row{
+    width: 100%;
+    margin: auto;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+
+.card:hover{
+    box-shadow: 0 8px 8px rgba(0,0,0,0.19), 0 10px 10px rgba(0,0,0,0.24);
+    cursor:pointer;
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.card-inner{
+    padding: 10px;
+}
+
+.letra-titulo-card{
+    color:black;
+    text-decoration: none;
+}
+
+
+.fechaFondo{
+    background: rgba(255, 255, 255, 0.50);
+}
+
+
+.columna{
+    width: 100%;
+}
+
+/*--------------------------------*/
+
+.image{
+    width: 100%;
+    height: 550;
+}
+
+
+.aviso{
+    width: 100%;
+    background: rgba(104, 103, 103, 0.39);
+    color:rgb(255, 255, 255);
+}
+
+.efecto{
+    background: rgba(168, 168, 168, 0.39);
+}
+
+.textoColor{
+    color:rgb(255, 255, 255);
+}
+
+
+.tituloDiv{
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    font-size:32px;
+    color:white;
+    background: rgba(0, 0, 0,0.35)
+}
+
+.textTitulo1{
+    color: #dc3545;
+    text-shadow: 0.04em 0.04em 0.04em #333;
+    font-weight: 600;
+}
+
+.textTitulo2{
+    text-shadow: 0.04em 0.04em 0.04em #333;
+    font-weight: 600;
+}
+
+/*---------Modal------------*/
+
+.descipccion{
+    font-weight: 700;
+    animation: animacionModal 1.2s;
+    text-shadow: 0.04em 0.04em 0.04em #333;
+}
+.nombreJapones{
+    animation: animacionModal 1.2s; 
+}
+
+.modal-title{
+    font-weight: 700;
+    width: 100%;
+    animation: animacionModal 1.2s;
+    text-shadow: 0.04em 0.04em 0.04em #333;
+}
+
+.modal-title2{
+    width: 100%;
+    font-weight: 700;
+    animation: animacionModal 1.2s;
+    text-shadow: 0.04em 0.04em 0.04em #333;
+}
+
+.imagenPersonaje{
+margin: auto;
+}
+
+.margenImg{
+    margin-bottom: 5px;
+    animation: animacionModal 1.2s;
+}
+
+.textoDescipccion{
+    animation: animacionModal 1.2s;
+}
+
+@keyframes animacionModal{
+ 0%{opacity: 0;filter:blur(14)}   
+ 100%{opacity: 1;filter:blur(0)}
+}
+
+.modal-content{
+    background-color: rgba(51, 51, 51, 0.74);
+    color: #fff;
+}
+
+.modal-body{
+    text-align: justify;
+}
+
+.close {
+    float: right;
+    line-height: 1;
+    font-size: 2rem;
+    color: #f00;
+    text-shadow: 0 1px 0 #f00;
+}
+
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 550px;
+    }
+}
+
+/*---------- Fin del modal----------*/
+.fondoPrincipal{
+    width: 100%;
+    background: rgba(0, 0, 0, 0)
+}
+
+.fondoImgTop{
+    bottom: 150px;
+    width: 100%;
+  	height: 40vh; /*84*/
+	object-fit: cover;
+    opacity: 0.85;
+}
+
+
+/*--------------------------------------
+                    Buscador
+----------------------------------------*/
+.buscador-personaje{
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type=text]:focus{
+    width: 100%;
+    margin-right: 4px;
+    border: 4px solid #dc3545 ;
+    border-radius: 1em;
+}
+
+input{
+    width: 100%;
+    margin-right: 4px;
+    border: 4px solid;
+    border-radius: 1em;
+}
+
+.bordes{
+    border-radius: 1em;
+    text-shadow: 0.04em 0.04em 0.04em #333;
+}
+
+.formBordes{
+    border-color: rgb(189, 42, 42);
+}
+
+/*-----------Mensaje Error------------*/
+.aviso{
+    width: 100%;
+    background: rgba(104, 103, 103, 0.39);
+    color:rgb(255, 255, 255);
+}
+
+.img-error{
+    width: 45%;
+    height: auto;
+    max-height:80% ;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+.efecto{
+    background: rgba(168, 168, 168, 0.39);
+}
+
+
+.textoColor{
+    color:rgb(255, 255, 255);
+}
+
+.template{
+    margin-top: 30px;
+    text-align: center;   
+    color: #fff;
+}
+
+.espacioSpiner{
+    margin: 1 0px;
+}
+
+
+/*--------- botones de navegacion----------------*/
+.navegacionBtn{
+    color:#333;
+}
+
+.contenedor-botones{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/*-------toast------*/
+.customToast{
+    position: absolute; top: 60px; right: 10px;
+}
+
+
+/*--------------------------------------------------
+                   Texto animado
+----------------------------------------------------*/
+
+.prueba3 {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.prueba3:first-of-type {     
+  animation: showup3 7s infinite;
+}
+
+.prueba3:last-of-type {
+  width:0px;
+  animation: reveal3 7s infinite;
+}
+
+.prueba3:last-of-type span {
+  margin-left:-120px;
+  animation: slidein3 7s infinite;
+}
+
+@keyframes showup3 {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein3 {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal3 {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:120px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:120px;}
+}
+

@@ -1,0 +1,17 @@
+.textNav{
+    font-weight: 700;
+}
+
+.BotonSesion{
+    color: #000 !important;
+    width: 150px;
+}
+
+.tamanioBoton{
+    width: 150px;
+    margin-left:5px ;
+}
+
+.estiloDropdown{
+    text-align: center;
+}

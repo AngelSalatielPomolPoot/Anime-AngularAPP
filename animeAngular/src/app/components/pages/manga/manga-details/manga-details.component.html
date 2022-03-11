@@ -1,0 +1,73 @@
+
+<div class="container">
+    <div class="row" >
+        <div  class="card mb-3 detalles-card" *ngIf="mangas">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img  [src]="mangas.data[index].attributes.posterImage.original"
+                    [alt]="mangas.data[index].attributes.titles.en_jp"
+                    class="detalles-imagen">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title"><strong>{{mangas.data[index].attributes.titles.en_jp}}  </strong><FONT SIZE=3>{{mangas.data[index].attributes.startDate | date: 'y'}}</FONT></h2> <!--Nuevo-->
+                            <p *ngIf="mangas.data[index].attributes.averageRating >= '1' "><strong>{{mangas.data[index].attributes.averageRating}}%</strong><span class="has-text-weight-semibold has-text-grey is-uppercase"> de aprobación por la comunidad</span> </p>
+                        <h5><strong> Sinopsis</strong></h5>
+                        <p class="card-text">{{mangas.data[index].attributes.synopsis }}</p> <!--Nuevo-->
+
+                        <h5 class="has-text-weight-semibold is-uppercase has-text-grey has-border-bottom">Detalles del manga</h5>
+                        <ul class="has-text-light">
+                            <li *ngIf="mangas.data[index].attributes.volumeCount; else BlockElse0 ">
+                                <strong>Volúmenes </strong>{{mangas.data[index].attributes.volumeCount}}
+                            </li>
+                            <ng-template #BlockElse0><li><span><strong>Volúmenes: </strong> 1</span></li></ng-template>
+
+                            <li *ngIf="mangas.data[index].attributes.titles.en_us" >
+                              <strong >Inglés </strong>{{mangas.data[index].attributes.titles.en_us}}
+                            </li>
+
+                            <li *ngIf="mangas.data[index].attributes.titles.en_us !== null; else BlockElse3">
+                              <strong>Japonés </strong>{{mangas.data[index].attributes.titles.ja_jp}}
+                            </li>
+                            <ng-template #BlockElse3><li><span><strong>Japonés </strong>- No hay</span></li></ng-template>
+
+                            <li *ngIf="mangas.data[index].attributes.titles.en_jp !== null; else BlockElse2">
+                                <strong>Japonés (Romaji) </strong>{{mangas.data[index].attributes.titles.en_jp}}
+                            </li>
+                            <ng-template #BlockElse2><li><span><strong>Japonés (Romaji) </strong>- No hay</span></li></ng-template>
+
+                            <li *ngIf="mangas.data[index].type !== null; else BlockElse4">
+                              <strong>Tipo </strong>{{mangas.data[index].type}}
+                            </li>
+                            <ng-template #BlockElse4><li><span><strong>Tipo </strong>-Manga</span></li></ng-template>
+
+                            <li *ngIf="mangas.data[index].type !== null; else BlockElse5">
+                              <strong>Estado </strong>{{mangas.data[index].attributes.status}}
+                            </li>
+                            <ng-template #BlockElse5><li><span><strong>Estado </strong>-Desconocido</span></li></ng-template>
+
+                            <li *ngIf="mangas.data[index].type !== null; else BlockElse6">
+                              <strong>Publicado </strong>{{mangas.data[index].attributes.startDate |date}}
+                            </li>
+                            <ng-template #BlockElse6><li><span><strong>Publicado </strong>-Desconocido</span></li></ng-template>
+
+                            <li *ngIf="mangas.data[index].type !== null; else BlockElse7">
+                              <strong>Serialización </strong>{{mangas.data[index].attributes.serialization}}
+                            </li>
+                            <ng-template #BlockElse7><li><span><strong>Publicado </strong>-Desconocido</span></li></ng-template>
+                        </ul>
+                    </div>
+                    <div class="raiting">
+                      <a> <img class="corazon"  [src]="'assets/Recursos/heart.png'"> Lugar <strong>#{{mangas.data[index].attributes.popularityRank}}</strong> (Mangas populares)</a>
+                      &nbsp; &nbsp;
+                    </div>
+                    <div class="raiting">
+                      <a> <img class="estrella" [src]="'assets/Recursos/star.png'"> Lugar <strong>#{{mangas.data[index].attributes.ratingRank}}</strong> (Mangas mejor evaluados)</a>
+                    </div>
+                    <qrcode [qrdata]="qrdata" [width]="150" [errorCorrectionLevel]="'M'"></qrcode>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

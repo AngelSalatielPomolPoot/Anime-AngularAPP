@@ -1,0 +1,246 @@
+<div id="presentacion">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-pause="false">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                    <img class="d-block img-fluid imagenCarrocel" [src]="'assets/Recursos/home1.jpg'" alt="First slide">
+                <div class="carousel-caption d-md-block">
+                    <div class="banner-text">
+                        <h2 class="TituloAnimeCarrosuel">Bienvenidos </h2>
+                        <p>A Anime <span class="TituloAnimeCarrosuel">Angular<span class="text-danger">APP</span></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block img-fluid imagenCarrocel" [src]="'assets/Recursos/home2.jpg'" alt="First slide">
+                <div class="carousel-caption d-md-block ">
+                    <div class="banner-text">
+                        <h2 class="TituloAnimeCarrosuel">Anime Y Manga</h2>
+                        <p>Decide Lo Que Quieres Ver </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block img-fluid imagenCarrocel" [src]="'assets/Recursos/home3.jpg'" alt="First slide">
+                <div class="carousel-caption d-md-block">
+                    <div class="banner-text">
+                        <h2 class="TituloAnimeCarrosuel">Siempre Lo Mejor</h2>
+                        <p>Descubre Este Nuevo Mundo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contenido">
+    <div class="container">
+        <div class="textoTituloContenido">
+            <span>
+                ¿Ya Conoces
+            </span>
+            <br>
+            <span>
+                Anime Angular<span class="text-danger">APP</span>?
+            </span>
+        </div>
+        <div class="texnoNormal">
+            <p>Te invitamos a que conozcas nuestra página de anime,</p>
+            <p>Nuestro contenido es diverso y tendrás mucho que explorar.</p>
+            <p>El mejor contenido de anime al alcanza de tus manos.</p>
+            <p>¿Qué esperas? Explora y conoce todo lo que tenemos para ti.</p>
+        </div>
+    </div>
+</div>
+
+<div id="informacion">
+    <div class="container">
+        <div class="textoTituloInformacion">
+            <span>
+                Lo Mejor del
+            </span>
+            <br>
+            <span>
+                Anime
+            </span>
+        </div>
+        <div class="texnoNormal2">
+            <p>Explora el apartado de Animes, donde te presentamos una lista donde podrás visualizar
+                la información del anime que gustes.</p>
+            <p>Ten un diseño intuitivo y amigable para encontrar el anime que deseas a través de nuestro buscador
+                de una forma rápida y sencilla.</p>
+            <p>¿Quieres conocer que animes son los mejores?, Entonces te presentamos una sección para ti,
+                donde podrás ver el top de animes divididas en diferentes categorías, tú decides cual conocer. </p>
+            <p>Si estas interesados en los personajes de un anime, podrás revisarlo en nuestro apartado de WikiPersonajes,
+                donde podrás buscar con el nombre el personaje que desees conocer.</p>
+        </div>
+        <div class="contenedor-botones justify-content-center d-flex">
+            <a class="btn btn-danger btnIndividual" routerLink="/anime-lista">Ver Ánime</a>
+            <a class="btn btn-danger btnIndividual" routerLink="/top-anime">Ver Top</a>
+            <a class="btn btn-danger btnIndividual" routerLink="/personaje-lista">Ver WikiPersonajes</a>
+        </div>
+    </div>
+</div>
+
+<div id="informacion2">
+    <div class="container">
+        <div class="textoTituloInformacion2">
+            <span>
+                Lo Mejor del
+            </span>
+            <br>
+            <span>
+                Manga
+            </span>
+        </div>
+        <div class="texnoNormal3">
+            <p>Si te gusta leer y saber antes que nadie todo lo que pasa sobre tu anime favorito,
+                tenemos un apartado excelente para ti.
+            </p>
+            <p>Mira nuestro apartado de manga, donde podrás consultar toda la información necesaria acerca
+                del manga que desees conocer. </p>
+            <p>Mira nuestra lista predeterminada, o bien, busca un manga en específico que tu desees conocer
+                a mayor detalle de una forma sencilla y rápida.</p>
+            <p>No te quedes sin saber esto y más. Ve ahora a explorar nuestro apartado de manga.</p>
+        </div>
+        <div class="contenedor-botones justify-content-center d-flex">
+            <a class="btn btn-danger" routerLink="/lista-manga">Ver Manga</a>
+        </div>
+
+    </div>
+</div>
+
+<div id="informacion">
+    <div class="container">
+        <h2 class="textoTituloInformacion2">Formulario de Contacto</h2>
+        <form (ngSubmit)="contactForm(forma.value)" #forma="ngForm">
+            <div class="form-group">
+            <label for="name" class="textocorreo"><b>Nombre</b></label>
+                <input    
+                    type="text"
+                    required
+                    #nombre="ngModel"
+                    [(ngModel)]="register.nombre"
+                    [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}"
+                    class="form-control"
+                    name="nombre"
+                    placeholder="nombre"
+                >
+                <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <div *ngIf="nombre.errors.minlength">
+                        ¡Introduzca un nombre con 5 caracteres mínimo!
+                    </div>
+                    <div *ngIf="nombre.errors.required">
+                        ¡Introduzca un nombre válido por favor!
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="textocorreo"><b>Asunto</b></label>
+                <input 
+                    type="text"
+                    required
+                    #asunto="ngModel"
+                    [(ngModel)]="register.asunto"
+                    [ngClass]="{'is-valid': !asunto.invalid, 'is-invalid': asunto.invalid}"
+                    class="form-control"
+                    name="asunto"
+                    placeholder="Asunto"
+                />
+                <div class="invalid-feedback" *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)">
+                    <div *ngIf="asunto.errors.minlength">
+                        ¡Introduzca un asunto con 5 caracteres mínimo!
+                    </div>
+                    <div *ngIf="asunto.errors.required">
+                        ¡Introduzca un asunto válido por favor!
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="textocorreo"><b>E-mail</b></label>
+                <input
+                    type="email"
+                    #email="ngModel"
+                    [(ngModel)]="register.email"
+                    placeholder="Introduzca su correo electrónico"
+                    name="email"
+                    class="form-control"
+                    required
+                    [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}"
+                    pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                />
+                <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors.required">
+                        ¡Introduzca un correo electrónico válido por favor!
+                    </div>
+                    <div *ngIf="email.errors && email.errors.pattern">
+                        ¡El correo electrónico no sigue el formato correcto. Sigue este ejemplo: anartz@mugika.com!
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="textocorreo"><b>Mensaje</b></label>
+                <textarea 
+                    required
+                    #mensaje="ngModel"
+                    [(ngModel)]="register.mensaje"
+                    [ngClass]="{'is-valid': !mensaje.invalid, 'is-invalid': mensaje.invalid}"
+                    class="form-control" 
+                    cols="30" 
+                    rows="6" 
+                    name="mensaje" 
+                    placeholder="Escriba su Mensaje">
+                </textarea>
+                <div class="invalid-feedback" *ngIf="mensaje.invalid && (mensaje.dirty || mensaje.touched)">
+                    <div *ngIf="mensaje.errors.minlength">
+                        ¡Introduzca un mensaje con 5 caracteres mínimo!
+                    </div>
+                    <div *ngIf="mensaje.errors.required">
+                        ¡Introduzca un mensaje válido por favor!
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="espera">
+
+                <div  class="template">
+                    <h1 class="textoEspera"> Espere...</h1>
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary espacioSpiner" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-secondary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-warning" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-info" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-light" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <button type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-danger enviar">Enviar</button>
+        </form>
+    </div>
+    
+</div>

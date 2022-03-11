@@ -1,0 +1,157 @@
+<div class="container">
+
+    <ngb-carousel class="carousel-pantalla" [pauseOnHover]="pauseOnHover1">
+        <ng-template ngbSlide *ngFor="let imagenCarrosel of imagenesCarrosel">
+            <div class="picsum-img-wrapper">
+                <img
+                    class="carrosel-imagen"
+                    [src]="imagenCarrosel.srcImagen"
+                    alt="Random first slide"
+                >
+                <div class="fondoTransparente"></div>
+            </div>
+
+            <div class="carousel-caption">
+                <h1 class="textoCarrosel"><b>{{imagenCarrosel.texto}}</b></h1>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+
+
+    <div class="tituloDiv">
+        <div class="prueba textTitulo1"><b>Lista</b> </div>
+        <div class="prueba textTitulo2">
+            <span>De mangas</span>
+        </div>
+    </div>
+    <hr>
+
+    <div class="buscador-mangas">
+        <div class="d-flex">
+            <input
+                #inputSearch
+                autofocus="text"
+                type="text"
+                class="form-control formBordes me-2"
+                placeholder="Buscar Manga"
+                aria-label="Search"
+                (keyup.enter)="onSearchManga(inputSearch.value)"
+            />
+            <button class="btn btn-danger bordes" (click)="onSearchManga(inputSearch.value)">Buscar</button>
+        </div>
+    </div>
+
+    <div *ngIf="mangas" class="columna">
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3"  *ngFor="let mangas of mangas.data, let indice=index" >
+
+                <div class="card">
+                    <a class="imagenCard" [routerLink]="['/manga-details',indice,consulta]">
+                        <img
+                            [src]="mangas.attributes.posterImage.original"
+                            [alt]="mangas.attributes.titles.en_jp"
+                            class="card-img-top" >
+                    </a>
+                    <div class="card-body bodyPersonalizado">
+                        <a class="letra-titulo-card" [routerLink]="['/manga-details',indice,consulta]">
+                            <h5 class="card-title ">{{mangas.attributes.titles.en_jp|slice:0:35}}</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div *ngIf="!mostrar && !espera" class="justify-content-center d-flex contenedor-botones">
+
+        <nav aria-label="...">
+            <ul class="pagination">
+            <li class="page-item">
+                <span type="button" class="page-link navegacionBtn" (click)="getPrimeros()">Primero</span>
+            </li>
+            <li class="page-item">
+                <span type="button" class="page-link navegacionBtn" (click)="getAnterior()">Anterior</span>
+            </li>
+            <li class="page-item">
+                <a type="button"class="page-link navegacionBtn" (click)="getSiguiente()">Siguiente</a>
+            </li>
+            <li class="page-item">
+                <a type="button"class="page-link navegacionBtn" (click)="getUltimos()">Último</a>
+            </li>
+            </ul>
+        </nav>
+    </div>
+
+    <ng-container *ngIf="mostrar" >
+        <div class="row" >
+            <div class="card text-center aviso">
+                <div class="card-header">
+                <h3>Aviso</h3>
+                </div>
+                <div class="card-body efecto">
+                    <h3 class="card-title">No se pudo encontrar ninguna coincidencia</h3>
+                    <p class="card-text">Por favor, verifique que el nombre del manga que busca sea correcto</p>
+                    <img class="img-error" [src]="'/assets/Recursos/triste.png'">
+                </div>
+                <div class="card-footer text-muted ">
+                    <h4 class="textoColor">Mangas</h4>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="espera">
+        <div  class="template">
+
+
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-primary espacioSpiner" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <h1 class="textoEspera"> Espere...</h1>
+    </div>
+    </ng-container>
+
+    <!--Toast de advertencias-->
+    <div class="toast position-fixed customToast" data-delay="3000" >
+        <div class="toast-header">
+            <div class="rounded mr-2" style="height: 16px;width: 16px;background-color: red;"></div>
+            <strong class="mr-auto">Lo sentimos &nbsp;&nbsp; </strong>
+            <small>Hace 1 segundo</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            {{mensaje}}
+        </div>
+    </div>
+
+</div>
+

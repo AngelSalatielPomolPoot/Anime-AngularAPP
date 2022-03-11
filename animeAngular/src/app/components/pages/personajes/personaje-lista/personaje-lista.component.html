@@ -1,0 +1,209 @@
+<div class="container">
+
+    <div class="fondoPrincipal" >
+        <img
+            [src]="'/assets/Recursos/personajes.jpg'"
+            [alt]="'Animes Top'"
+            class="fondoImgTop"
+        />
+    </div>
+
+
+    <div class="tituloDiv">
+        <div class="prueba3 textTitulo1"><b>Personajes</b> </div>
+        <div class="prueba3 textTitulo2">
+            <span> Anime</span>
+        </div>
+    </div>
+
+    <div class="buscador-personaje">
+        <div class="d-flex">
+            <input
+                #inputSearch
+                autofocus="text"
+                type="text"
+                class="form-control formBordes me-2"
+                placeholder="Buscar Personaje"
+                aria-label="Search"
+                (keyup.enter)="onSearchPersonaje(inputSearch.value)"
+            />
+            <button class="btn btn-danger bordes" (click)="onSearchPersonaje(inputSearch.value)">Buscar</button>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="personajes" class="columna">
+        <div class="row " >
+
+            <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 "  *ngFor="let personaje of personajes.data,let indice =index" >
+
+                <div class="card">
+                    <a type="button" (click)="gerDatosPersonaje(indice)" class="imagenCard" data-toggle="modal" data-target="#exampleModal">
+                        <img *ngIf="personaje.attributes.image; else elseBlock2"
+                            [src]="personaje.attributes.image.original"
+                            [alt]="personaje.attributes.canonicalName"
+                            offset="300"
+                            class="card-img-top">
+
+                        <ng-template #elseBlock2>
+                            <img
+                                [src]="'assets/Recursos/imagen_no_encontrada.png'"
+                                [alt]="personaje.attributes.canonicalName"
+                                class="card-img-top tamImg">
+
+                        </ng-template>
+
+                    </a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item fechaFondo" >
+                            <h5 class="card-title ">{{personaje.attributes.canonicalName}}</h5>
+                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- botones navegacion siguiente -->
+
+    <div *ngIf="!mostrar && !espera" class="justify-content-center d-flex contenedor-botones">
+
+        <nav aria-label="...">
+            <ul class="pagination">
+            <li class="page-item">
+                <span type="button" class="page-link navegacionBtn" (click)="getPrimeros()">Primero</span>
+            </li>
+            <li class="page-item">
+                <span type="button" class="page-link navegacionBtn" (click)="getAnterior()">Anterior</span>
+            </li>
+            <li class="page-item">
+                <a type="button"class="page-link navegacionBtn" (click)="getSiguiente()">Siguiente</a>
+            </li>
+            <li class="page-item">
+                <a type="button"class="page-link navegacionBtn" (click)="getUltimos()">Último</a>
+            </li>
+            </ul>
+        </nav>
+    </div>
+
+    <ng-container *ngIf="mostrar" >
+        <div class="row" >
+            <div class="card text-center aviso">
+                <div class="card-header">
+                <h3>Aviso</h3>
+                </div>
+                <div class="card-body efecto">
+                    <h3 class="card-title">No se pudo encontrar ninguna coincidencia</h3>
+                    <p class="card-text">Por favor, verifique que el nombre del personaje que busca sea correcto</p>
+                    <img class="img-error" [src]="'/assets/Recursos/triste.png'">
+                </div>
+                <div class="card-footer text-muted ">
+                    <h4 class="textoColor">Personajes</h4>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="espera">
+        <div  class="template">
+
+
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-primary espacioSpiner" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <h1 class="textoEspera"> Espere...</h1>
+    </div>
+    </ng-container>
+
+
+
+    <!--Toast de advertencias-->
+    <div class="toast position-fixed customToast" data-delay="3000" >
+        <div class="toast-header">
+            <div class="rounded mr-2" style="height: 16px;width: 16px;background-color: red;"></div>
+            <strong class="mr-auto">Lo sentimos &nbsp;&nbsp; </strong>
+            <small>Hace 1 segundo</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            {{mensaje}}
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" *ngIf="personajes!==undefined && personajes!==null" id="exampleModalLabel">
+                        {{personajes.data[indexArreglo].attributes.canonicalName}}
+                    </h4>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" *ngIf="personajes!==undefined && personajes!==null">
+
+                    <div class="row margenImg">
+                    <img *ngIf="personajes.data[indexArreglo].attributes.image; else elseBlock3"
+                    [src]="personajes.data[indexArreglo].attributes.image.original"
+                    [alt]="personajes.data[indexArreglo].attributes.canonicalName"
+                    offset="300"
+                    class="imagenPersonaje">
+
+                    <ng-template #elseBlock3>
+                        <img
+                            [src]="'assets/Recursos/imagen_no_encontrada.png'"
+                            [alt]="personajes.data[indexArreglo].attributes.canonicalName"
+                            class="card-img-personaje tamImg">
+                    </ng-template>
+                    </div>
+                    <h3 class="modal-title2" *ngIf="personajes!==undefined && personajes!==null" id="exampleModalLabel">
+                       Nombre Japonés:
+                    </h3>
+                    <h5 class="nombreJapones"><i> {{personajes.data[indexArreglo].attributes.names.ja_jp}}</i></h5>
+                    <h3 class="descipccion" >Descripción:</h3>
+                    <div class="textoDescipccion" *ngIf="personajes.data[indexArreglo].attributes.description!=='';else elseBlock4" [innerHTML]="personajes.data[indexArreglo].attributes.description"></div>
+                    <ng-template #elseBlock4>
+                        <div  class="textoDescipccion">No conoces a las personas, tu solo conoces la parte que ellas te dejan ver <b>(Descripción no encontrada)</b></div>
+                    </ng-template>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

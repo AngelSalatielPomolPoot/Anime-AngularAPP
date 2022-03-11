@@ -1,0 +1,266 @@
+/*---------card ajustada-------*/
+.card{
+    width: 100%;
+    max-width:100%;
+    margin: 10px 0;
+    box-shadow: 0 rgba(0,0,0,0.19), 0 rgba(0,0,0,0.24);
+    background: rgba(255, 255, 255, 0.88);
+    transition: opacity 0.3s, filter 0.3s, box-shadow 0.3s;
+    opacity: 0.85;
+    filter: blur(0.4px);
+}
+
+.container{
+    animation: animacionAnime 1.5s;
+}
+
+@keyframes animacionAnime{
+    0%{opacity: 0;filter:blur(14)}   
+    100%{opacity: 1;filter:blur(0)}
+}
+
+.card-img-top{
+    height: calc(400px );
+    width: calc(100%+32px);
+    object-fit: cover;
+    animation: imgAnimacion 1.5s both;
+    filter:blur(0.5)
+}
+
+
+@keyframes imgAnimacion {
+    0% {opacity:0; filter:blur(14)}
+    100% {opacity:1; filter:blur(0)}
+}
+
+.bodyPersonalizado{
+    height: 90px;
+}
+
+.row{
+    width: 100%;
+    margin: auto;
+    justify-content: space-around;
+    margin-bottom: 90px;
+}
+
+
+
+.card:hover{
+    box-shadow: 0 8px 8px rgba(0,0,0,0.19), 0 10px 10px rgba(0,0,0,0.24);
+    cursor:pointer;
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.card-inner{
+    padding: 10px;
+}
+
+
+.anchoDiv{
+    width: 100%;
+    max-width:100%;
+}
+
+.textTitulo1{
+    color: #dc3545;
+    text-shadow: 0.04em 0.04em 0.04em #333;
+    font-weight: 600;
+}
+
+.textTitulo2{
+    text-shadow: 0.04em 0.04em 0.04em #333;
+    font-weight: 600;
+}
+
+.carrosel-imagen{
+    width: 100%;
+  	height: 50vh; /*84*/
+	object-fit: cover;
+    opacity: 0.8;
+    
+}
+
+.textoCarrosel{
+    font-family: "Oswald", sans-serif;
+    font-size: calc(2em + 2vw);;
+    text-shadow: 0.08em 0.08em 0.08em #333
+}
+
+.picsum-img-wrapper{
+    background: rgb(65, 65, 65);
+}
+
+.carousel-caption{
+    bottom: 38%;
+    width: 70%;
+    font-style: oblique;
+    border-radius: 1.5em;
+}
+
+.img-error{
+    width: 45%;
+    height: auto;
+    max-height:80% ;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.image{
+    width: 100%;
+    height: 600;
+}
+
+.letra-titulo-card{
+    color:black;
+    text-decoration: none;
+}
+
+
+.fechaFondo{
+    background: rgba(255, 255, 255, 0.50);
+}
+
+
+.columna{
+    width: 100%;
+}
+
+.row{
+    width: 100%;
+    margin: auto;
+}
+
+.aviso{
+    width: 100%;
+    background: rgba(104, 103, 103, 0.39);
+    color:rgb(255, 255, 255);
+}
+
+.efecto{
+    background: rgba(168, 168, 168, 0.39);
+}
+
+.textoColor{
+    color:rgb(255, 255, 255);
+}
+
+
+.tituloDiv{
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    font-size:32px;
+    color:white;
+    background: rgba(0, 0, 0,0.35)
+}
+
+
+/*---------------------------------*/
+
+ngb-pagination ::ng-deep a {
+    color: rgb(53, 53, 53) !important;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link {
+    border-color: rgb(53, 53, 53);
+    background-color: lightgrey;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }
+  
+  ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }
+
+
+  
+
+/*-----------Mensaje Error------------*/
+.aviso{
+    width: 100%;
+    background: rgba(104, 103, 103, 0.39);
+    color:rgb(255, 255, 255);
+}
+
+.img-error{
+    width: 45%;
+    height: auto;
+    max-height:80% ;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+.efecto{
+    background: rgba(168, 168, 168, 0.39);
+}
+
+
+.textoColor{
+    color:rgb(255, 255, 255);
+}
+
+.template{
+    margin-top: 30px;
+    text-align: center;   
+    color: #fff;
+}
+
+.espacioSpiner{
+    margin: 1 0px;
+}
+
+
+
+/*--------------------------------------------------
+                   Texto animado
+----------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+
+.prueba {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.prueba:first-of-type {     
+  animation: showup 7s infinite;
+}
+
+.prueba:last-of-type {
+  width:0px;
+  animation: reveal 7s infinite;
+}
+
+.prueba:last-of-type span {
+  margin-left:-170px;
+  animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:170px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:170px;}
+}

@@ -1,0 +1,249 @@
+.container{
+    animation: animacionTop 1.5s;
+}
+
+@keyframes animacionTop{
+    0%{opacity: 0;filter:blur(14)}
+    100%{opacity: 1;filter:blur(0)}
+}
+
+.card{
+    width: 100%;
+    max-width:100%;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.88);
+}
+
+
+.card-img-top{
+    height: calc(450px );
+    width: calc(100%+32);
+    object-fit: cover;
+    animation: imgAnimacion 1.5s both;
+    filter:blur(0.5)
+}
+
+@keyframes imgAnimacion {
+    0% {opacity:0; filter:blur(14)}
+    100% {opacity:1; filter:blur(0)}
+}
+
+.card-body{
+    height: 150px;
+}
+
+.row{
+    width: 100%;
+    margin: auto;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+.card-text{
+    margin-top: -5px;
+}
+
+.card-text2{
+    margin-top: -16px;
+}
+
+
+.card-inner{
+    padding: 10px;
+}
+
+
+.image{
+    width: 100%;
+    height: 600;
+}
+
+.letra-titulo-card{
+    color:black;
+    text-decoration: none;
+}
+
+.card{
+    width: 21rem;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.88);
+}
+
+.fechaFondo{
+    background: rgba(255, 255, 255, 0.50);
+}
+
+
+.columna{
+    width: 100%;
+}
+
+.row{
+    width: 100%;
+    margin: auto;
+}
+
+.aviso{
+    width: 100%;
+    background: rgba(104, 103, 103, 0.39);
+    color:rgb(255, 255, 255);
+}
+
+.efecto{
+    background: rgba(168, 168, 168, 0.39);
+}
+
+.textoColor{
+    color:rgb(255, 255, 255);
+}
+
+
+.tituloDiv{
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    font-size:32px;
+    color:white;
+    background: rgba(0, 0, 0,0.35)
+}
+
+.textTitulo1{
+    color: #dc3545;
+    text-shadow: 0.04em 0.04em 0.04em #333;
+    font-weight: 600;
+}
+
+.textTitulo2{
+    text-shadow: 0.04em 0.04em 0.04em #333;
+    font-weight: 600;
+}
+
+
+
+.fondoPrincipal{
+    width: 100%;
+    background: rgba(0, 0, 0,0.25)
+}
+
+.fondoImgTop{
+    bottom: 150px;
+    width: 100%;
+  	height: 40vh; /*84*/
+	object-fit: cover;
+    opacity: 0.85;
+}
+
+.menuDrop{
+    margin-top: 38px;
+}
+
+.contenedorFiltro{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.primerDrop{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.segundoDrop{
+    margin-bottom: 10px;
+}
+
+.tercerDrop{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.contenedorTitulo{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0.06em 0.06em 0.06em #333
+}
+
+
+/*-----------Mensaje Error------------*/
+.aviso{
+    width: 100%;
+    background: rgba(104, 103, 103, 0.39);
+    color:rgb(255, 255, 255);
+}
+
+.img-error{
+    width: 45%;
+    height: auto;
+    max-height:80% ;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+.efecto{
+    background: rgba(168, 168, 168, 0.39);
+}
+
+
+.textoColor{
+    color:rgb(255, 255, 255);
+}
+
+.template{
+    margin-top: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.espacioSpiner{
+    margin: 1 0px;
+}
+
+
+
+/*--------------------------------------------------
+                   Texto animado
+----------------------------------------------------*/
+
+.prueba2 {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.prueba2:first-of-type {
+  animation: showup2 7s infinite;
+}
+
+.prueba2:last-of-type {
+  width:0px;
+  animation: reveal2 7s infinite;
+}
+
+.prueba2:last-of-type span {
+  margin-left:-250px;
+  animation: slidein2 7s infinite;
+}
+
+@keyframes showup2 {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein2 {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal2 {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:250px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:250px;}
+}
+

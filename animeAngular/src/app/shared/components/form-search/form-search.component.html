@@ -1,0 +1,13 @@
+
+<div class="d-flex">
+    <input 
+        #inputSearch
+        autofocus="text"
+        type="text" 
+        class="form-control me-2"
+        placeholder="Buscar Ánime"
+        aria-label="Search"
+        (keyup.enter)="onSearch(inputSearch.value)"
+    />
+    <button class="btn btn-outline-light bordes" (click)="onSearch(inputSearch.value)">Buscar</button> 
+</div>

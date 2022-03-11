@@ -1,0 +1,110 @@
+<div class="container">
+    <ngb-carousel class="carousel-pantalla" [pauseOnHover]="pauseOnHover1">
+        <ng-template ngbSlide *ngFor="let imagenCarrosel of imagenesCarrosel">
+            <div class="picsum-img-wrapper">
+                <img
+                    class="carrosel-imagen"
+                    [src]="imagenCarrosel.srcImagen"
+                    alt="Random first slide"
+                >
+                <div class="fondoTransparente"></div>
+            </div>
+
+            <div class="carousel-caption">
+                <h1 class="textoCarrosel"><b>{{imagenCarrosel.texto}}</b></h1>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+
+    <div class="tituloDiv">
+        <div class="prueba textTitulo1"><b>Lista</b> </div>
+        <div class="prueba textTitulo2">
+            <span>De Animes</span>
+        </div>
+    </div>
+    <hr>
+
+    <div *ngIf="animes; else elseBlock" class="columna">
+        <ngb-pagination class="d-flex justify-content-center" [collectionSize]="(animes.last_page-1)*10" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" (pageChange)="loadPage($event)" [boundaryLinks]="true"></ngb-pagination>
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3"  *ngFor="let anime of animes.results,let indice =index" >
+
+                <div class="card">
+                    <a class="imagenCard" [routerLink]="['/anime-details',indice,consulta,page]">
+                        <img
+                            [src]="anime.image_url"
+                            [alt]="anime.title"
+                            class="card-img-top" >
+                    </a>
+                    <div class="card-body bodyPersonalizado">
+                        <a class="letra-titulo-card" [routerLink]="['/anime-details',indice,consulta,page]">
+                            <h5 class="card-title ">{{anime.title |slice:0:35}}</h5>
+                        </a>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <a class="letra-titulo-card" [routerLink]="['/anime-details',indice,consulta,page]">
+                            <li class="list-group-item fechaFondo" >Emisión: {{anime.start_date | date}}</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <ngb-pagination class="d-flex justify-content-center" [collectionSize]="(animes.last_page-1)*10" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" (pageChange)="loadPage($event)" [boundaryLinks]="true"></ngb-pagination>
+
+
+    </div>
+
+    <ng-template #elseBlock  >
+        <div class="row" *ngIf="errores || mostrar">
+            <div class="card text-center aviso">
+                <div class="card-header">
+                <h3>Aviso</h3>
+                </div>
+                <div class="card-body efecto">
+                    <h3 class="card-title">No se pudo encontrar ninguna coincidencia</h3>
+                    <p class="card-text">Por favor, verifique que el nombre del anime que busca sea correcto</p>
+                    <img class="img-error" [src]="'/assets/Recursos/triste.png'">
+                </div>
+                <div class="card-footer text-muted ">
+                    <h4 class="textoColor">Animes</h4>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-container *ngIf="espera">
+        <div  class="template">
+
+            <div class="d-flex justify-content-center">
+                <div class="spinner-grow text-primary espacioSpiner" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <h1 class="textoEspera"> Espere...</h1>
+        </div>
+    </ng-container>
+</div>

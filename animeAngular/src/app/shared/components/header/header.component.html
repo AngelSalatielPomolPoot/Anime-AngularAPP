@@ -1,0 +1,44 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand textNav" routerLink="/home" routerLinkActive="active">Anime Angular<span class="text-danger">APP</span></a>
+
+        <button 
+            class="navbar-toggler"
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbarCollapse" 
+            aria-controls="navbarCollapse" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/anime-lista" routerLinkActive="active">Ánime <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" routerLink="/top-anime" routerLinkActive="active">Top Ánime <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" routerLink="/personaje-lista" routerLinkActive="active">WikiPersonajes <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" routerLink="/lista-manga" routerLinkActive="active">Manga <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <app-form-search></app-form-search>
+          <div *ngIf="usuarioSesion" class="navbar-text pull-right">           
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle tamanioBoton" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{usuarioSesion.nombreCompleto|slice:0:15}}
+                </button>
+                <ul class="dropdown-menu estiloDropdown" aria-labelledby="dropdownMenuButton1">
+                  <li><a type="button" class="dropdown-item BotonSesion" (click)="cerrarSesion()">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+</header>

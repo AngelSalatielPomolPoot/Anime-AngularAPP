@@ -1,0 +1,142 @@
+<div class="container">
+
+    <div class="fondoPrincipal" >
+        <img
+            [src]="'/assets/Recursos/top.png'"
+            [alt]="'Animes Top'"
+            class="fondoImgTop"
+        />
+    </div>
+
+
+    <div class="tituloDiv">
+        <div class="prueba2 textTitulo1"><b>Top</b> </div>
+        <div class="prueba2 textTitulo2">
+            <span>Mejores Animes</span>
+        </div>
+    </div>
+
+    <div *ngIf="top; else elseBlock" class="columna">
+
+        <div class="contenedorFiltro">
+            <div ngbDropdown class="d-inline-block primerDrop">
+                <button class="btn btn-danger" id="dropdownBasic1" ngbDropdownToggle>Filtrar Por:</button>
+                <div ngbDropdownMenu class="menuDrop" aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="getBusqueda(1)">Próximos</button>
+                    <button ngbDropdownItem (click)="getBusqueda(2)">Emisión</button>
+                    <button ngbDropdownItem (click)="getBusqueda(3)">Series TV</button>
+                    <button ngbDropdownItem (click)="getBusqueda(4)">Películas</button>
+                    <button ngbDropdownItem (click)="getBusqueda(5)">Ovas</button>
+                    <button ngbDropdownItem (click)="getBusqueda(6)">Especiales</button>
+                    <button ngbDropdownItem (click)="getBusqueda(7)">Más Populares</button>
+                    <button ngbDropdownItem (click)="getBusqueda(8)">Favoritos</button>
+                </div>
+            </div>
+            <div ngbDropdown class="d-inline-block segundoDrop">
+                <button class="btn btn-danger" id="dropdownBasic2" ngbDropdownToggle>Cantidad A Mostrar</button>
+                <div ngbDropdownMenu class="menuDrop" aria-labelledby="dropdownBasic2">
+                    <button ngbDropdownItem (click)="setCantidad(10)">10</button>
+                    <button ngbDropdownItem (click)="setCantidad(20)">20</button>
+                    <button ngbDropdownItem (click)="setCantidad(30)">30</button>
+                    <button ngbDropdownItem (click)="setCantidad(40)">40</button>
+                    <button ngbDropdownItem (click)="setCantidad(50)">50</button>
+                </div>
+            </div>
+            <div ngbDropdown class="d-inline-block tercerDrop">
+              <button class="btn btn-danger" id="dropdownBasic1" ngbDropdownToggle>Exportar Archivo:</button>
+              <div ngbDropdownMenu class="menuDrop" aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem class="btn btn-danger" (click)="jsPDFGenerator()">PDF</button>
+                <button ngbDropdownItem class="btn btn-danger" (click)="generateExcel()">EXCEL</button>
+              </div>
+          </div>
+        </div>
+
+        <div class="contenedorTitulo">
+            <h1>{{tituloFiltro}}</h1>
+        </div>
+
+        <div class="row" >
+
+            <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3"  *ngFor="let anime of top.top,let indice =index" >
+
+                <div class="card">
+                    <!--<a [routerLink]="['/anime-details',indice,consulta]">-->
+                        <img
+                            [src]="anime.image_url"
+                            [alt]="anime.title"
+                            class="card-img-top" >
+                    <!--</a>-->
+                    <div class="card-body">
+                        <!--<a class="letra-titulo-card" [routerLink]="['/anime-details',indice,consulta]">-->
+                            <h5 class="card-title ">{{anime.title |slice:0:50}}</h5>
+                            <p class="card-text">Género: {{anime.type}}</p>
+                            <p class="card-text2">Posición: #{{indice+1}}</p>
+                        <!--</a>-->
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <!--<a class="letra-titulo-card" [routerLink]="['/anime-details',indice,consulta]">-->
+                            <li *ngIf="anime.start_date; else elseBlock " class="list-group-item fechaFondo" >
+                                Emisión: {{anime.start_date| date:'MMM yyyy'}}
+                            </li>
+                            <ng-template #elseBlock>
+                                <li class="list-group-item fechaFondo" >
+                                    Emisión: Desconocida
+                                </li>
+                            </ng-template>
+                        <!--</a>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <ng-template #elseBlock  >
+        <div class="contenedorFiltro">
+            <div ngbDropdown class="d-inline-block primerDrop">
+                <button class="btn btn-danger" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="visually-hidden"> Cargando...</span>
+                </button>
+            </div>
+            <div ngbDropdown class="d-inline-block segundoDrop">
+                <button class="btn btn-danger" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="visually-hidden"> Cargando...</span>
+                </button>
+            </div>
+        </div>
+
+        <div  class="template">
+
+            <div class="d-flex justify-content-center">
+                <div class="spinner-grow text-primary espacioSpiner" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <h1 class="textoEspera"> Espere...</h1>
+        </div>
+    </ng-template>
+</div>
+

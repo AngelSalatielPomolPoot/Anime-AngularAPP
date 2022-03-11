@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row" >
+        <div  class="card mb-3 detalles-card" *ngIf="animes">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img [src]="animes.results[index].image_url"
+                    [alt]="animes.results[index].title"
+                    class="detalles-imagen">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title">{{animes.results[index].title}}</h3> <!--Nuevo-->
+                        <h5> Sinopsis</h5> <!--Nuevo-->
+                        <p class="card-text">{{animes.results[index].synopsis}}</p> <!--Nuevo-->
+                        <h5 class="has-text-weight-semibold is-uppercase has-text-grey has-border-bottom">Tipo</h5>
+                        <p class="card-text text-muted">{{animes.results[index].type}}</p> <!--Nuevo-->
+                        <h5 class="has-text-weight-semibold is-uppercase has-text-grey has-border-bottom">Información general</h5>
+                        <ul class="has-text-light">
+                            <li><span class="has-text-weight-semibold has-text-grey is-uppercase">Puntuación:</span> {{animes.results[index].score}}</li>
+                            <li><span class="has-text-weight-semibold has-text-grey is-uppercase">Episodios:</span> {{animes.results[index].episodes}}</li>
+                            <li><span class="has-text-weight-semibold has-text-grey is-uppercase">Fecha de inicio:</span> {{animes.results[index].start_date |date}}</li>
+                            <li><span class="has-text-weight-semibold has-text-grey is-uppercase">Fecha de finalización:</span> {{animes.results[index].end_date |date}}</li>
+                        </ul>
+                        <qrcode [qrdata]="qrdata" [width]="150" [errorCorrectionLevel]="'M'"></qrcode>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

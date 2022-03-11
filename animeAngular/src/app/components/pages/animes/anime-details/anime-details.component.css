@@ -1,0 +1,79 @@
+
+.card{
+    width: 100%;
+    max-width:100%;
+    background: rgba(255, 255, 255, 0.88);
+}
+
+.row{
+    width: 100%;
+    margin: auto;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.card img{
+    width: 100%;
+    transition: opacity 0.7; 
+    min-height: 45vh;
+    animation: imgAnimacion 1.5s both;
+    object-fit: contain;  
+}
+
+.card-body{
+    animation: imgAnimacion 1.5s both;
+    text-align: justify;
+}
+
+@keyframes imgAnimacion {
+    0% {opacity:0; filter:blur(14)}
+    100% {opacity:1; filter:blur(0)}
+}
+
+
+.card img:hover{
+    opacity: 1;
+}
+
+.card:hover{
+    box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.24);
+    cursor:pointer;
+}
+
+.card-inner{
+    padding: 10px;
+}
+
+
+.detalles-card{
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+.detalles-imagen{
+    padding: 3px;
+    border-radius: 00.5em;
+    
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+
+.card:hover{
+    box-shadow: none;
+    cursor:default;
+}
+
+.card img{
+    opacity: 1;   
+}
+
+.card{
+    background: rgba(255, 255, 255, 0.88);
+}
+
+
+
